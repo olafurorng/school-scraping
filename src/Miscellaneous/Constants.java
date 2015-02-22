@@ -5,5 +5,5 @@ package Miscellaneous;
  */
 public class Constants
 {
-    public static final String WEBSITE = "http://www.boksala.is/";
+    public static final String ICELANDIC_BOOK_SALE_WEBSITE = "http://www.boksala.is/";
 }

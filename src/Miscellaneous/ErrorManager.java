@@ -13,33 +13,17 @@ import java.util.ArrayList;
 public class ErrorManager
 {
 
-    private static final String EMAIL_TITLE = "Scraping Error";
-    private static final ArrayList<String> EMAIL_ADDRESSES = new ArrayList<String>()
-    {{
-            add("oog5@hi.is");
-            // TODO: add vikx+hlynx emails
-        }};
-
     public ErrorManager()
     {
-        checkConnection(Constants.WEBSITE);
+
     }
 
     public void onError(String description)
     {
-        sendErrorEmail("onError - see attached log. Description: " + description);
+        // TODO: handle error
     }
 
-
-    private void sendErrorEmail(String errorMessage)
-    {
-        // TODO: getLog
-
-
-        // TODO: send email
-    }
-
-    private boolean checkConnection(String urlString)
+    public boolean checkConnection(String urlString)
     {
         try {
             URL url = new URL(urlString);
@@ -67,7 +51,5 @@ public class ErrorManager
             Log.ex("Connection NOT established", exception);
             return false;
         }
-
-
     }
 }
