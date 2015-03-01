@@ -1,5 +1,6 @@
 import Miscellaneous.Constants;
 import Miscellaneous.ErrorManager;
+import logic.Scraper;
 
 public class MainProgram
 {

@@ -17,6 +17,13 @@ public class Log
         System.out.println("INFO >>> " + message);
     }
 
+
+    // for error
+    public static void err(String message)
+    {
+        System.out.println("ERROR >>> " + message);
+    }
+
     // for exceptions
     public static void ex(String message, Exception ex)
     {

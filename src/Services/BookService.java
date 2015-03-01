@@ -1,9 +1,11 @@
+package Services;
+
 /**
  * Created by olafurorn on 2/22/15.
  */
-public class Service
+public class BookService
 {
-    public Service()
+    public BookService()
     {
 
     }

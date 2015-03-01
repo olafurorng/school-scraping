@@ -1,4 +1,8 @@
+package logic;
+
+import Entities.Book;
 import Miscellaneous.ErrorManager;
+import Services.BookService;
 
 import java.util.List;
 import java.util.Map;
@@ -11,12 +15,12 @@ public class Scraper
     private List<List<String>> categories;
     private Map<String, String> urls;
     private ErrorManager errorManager;
-    private Service service;
+    private BookService bookService;
 
     public Scraper()
     {
         errorManager = MainProgram.getProgram().getErrorManager();
-        service = new Service();
+        bookService = new BookService();
 
     }
 
@@ -24,8 +28,7 @@ public class Scraper
     {
         scrapeCategories();
         JsonArray dataAsJsonArray = getScrapedData();
-        service.sendDataToDB(dataAsJsonArray);
-
+        bookService.sendDataToDB(dataAsJsonArray);
     }
 
     private void scrapeCategories()
