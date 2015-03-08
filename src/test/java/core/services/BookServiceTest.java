@@ -4,6 +4,7 @@ import core.TestCore;
 import core.entities.Book;
 import core.logic.Scraper;
 import core.miscellaneous.ErrorManager;
+import core.miscellaneous.Log;
 import junit.framework.TestCase;
 import org.json.JSONObject;
 
@@ -23,25 +24,29 @@ public class BookServiceTest extends TestCore {
 
         service = spy(new BookService(errorManager));
 
-
     }
 
     public void tearDown() throws Exception {
         service = null;
     }
 
-    public void testSendDataToDB() throws Exception {
-        Book book = mockGenerateBooks(1).get(0);
-        Scraper scraper = spy(new Scraper(mock(ErrorManager.class),
-                mock(BookService.class)));
-        JSONObject bookAsJson = scraper.turnBookIntoJsonBook(book);
+    public void testSendDataToDbWithResponseCode() throws Exception {
+        for (int responseCode : responsesFromDatabaseTeam)
+        {
+            Book book = mockGenerateBooks(1).get(0);
+            Scraper scraper = spy(new Scraper(mock(ErrorManager.class),
+                    mock(BookService.class)));
+            JSONObject bookAsJson = scraper.turnBookIntoJsonBook(book);
 
-        HttpURLConnection con = mock(HttpURLConnection.class);
-        when(con.getResponseCode()).thenReturn(300);
-        when(service.getCon(any(HttpURLConnection.class))).thenReturn(con);
+            HttpURLConnection con = mock(HttpURLConnection.class);
+            when(con.getResponseCode()).thenReturn(responseCode);
+            when(service.getCon(any(HttpURLConnection.class))).thenReturn(con);
 
-        service.sendDataToDB(bookAsJson);
+            service.sendDataToDB(bookAsJson);
 
-        verify(service.errorManager).onError();
+        }
+
+        // verifying what happens for different response codes
+        verify(service.errorManager, times(responsesFromDatabaseTeam.length - 1)).onError();
     }
 }

@@ -32,6 +32,14 @@ public class BookService
         this.errorManager = errorManager;
     }
 
+    /**
+     * Note: a lot of stuff can change here as the database team has not decided completeley how they
+     * are going to have the endpoint and all the communications with us.
+     *
+     * So take this code with
+     *
+     * @param oneBookAsJson
+     */
     public void sendDataToDB(JSONObject oneBookAsJson)
     {
         HttpURLConnection httpCon;
@@ -47,7 +55,7 @@ public class BookService
             out.close();
 
 
-            if (getCon(httpCon).getResponseCode() / 100 == 2)
+            if (getCon(httpCon).getResponseCode() == 200) // TODO: this might change, we are waiting for the database team
             {
                 // TODO log some information out
             }
