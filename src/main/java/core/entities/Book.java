@@ -1,4 +1,4 @@
-package Entities;
+package core.entities;
 
 /**
  * Created by olafurorn on 2/22/15.

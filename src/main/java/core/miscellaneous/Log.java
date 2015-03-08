@@ -1,4 +1,4 @@
-package Miscellaneous;
+package core.miscellaneous;
 
 /**
  * Created by olafurorn on 1/21/15.
