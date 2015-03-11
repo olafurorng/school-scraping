@@ -55,7 +55,7 @@ public class BookService
             out.close();
 
 
-            if (getCon(httpCon).getResponseCode() == 200) // TODO: this might change, we are waiting for the database team
+            if (getResponseCode(httpCon) == 200) // TODO: this might change, we are waiting for the database team
             {
                 // TODO log some information out
             }
@@ -81,15 +81,12 @@ public class BookService
 
     /**
      *
-     * This method does nothing, only used to be able to have
-     * 'HttpURLConnection httpCon' in core.services.BookService#sendDataToDB(org.json.JSONObject)
-     * as a mock up object to be able to mock up response, see Mockito library
-     *
      * @param con
-     * @return @param con
+     * @return response code for this @param con
      */
-    protected HttpURLConnection getCon(HttpURLConnection con)
+    protected int getResponseCode(HttpURLConnection con)
     {
-        return con;
+        // con.getResponseCode();
+        return 0;
     }
 }

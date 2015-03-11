@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 
 /**
  * Created by olafurorn on 3/8/15.
+ *
  */
 public class TestCore extends TestCase
 {

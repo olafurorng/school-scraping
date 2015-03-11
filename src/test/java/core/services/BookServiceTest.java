@@ -30,6 +30,10 @@ public class BookServiceTest extends TestCore {
         service = null;
     }
 
+    /**
+     * Here we test
+     * @throws Exception
+     */
     public void testSendDataToDbWithResponseCode() throws Exception {
         for (int responseCode : responsesFromDatabaseTeam)
         {
@@ -39,8 +43,7 @@ public class BookServiceTest extends TestCore {
             JSONObject bookAsJson = scraper.turnBookIntoJsonBook(book);
 
             HttpURLConnection con = mock(HttpURLConnection.class);
-            when(con.getResponseCode()).thenReturn(responseCode);
-            when(service.getCon(any(HttpURLConnection.class))).thenReturn(con);
+            when(service.getResponseCode(any(HttpURLConnection.class))).thenReturn(responseCode);
 
             service.sendDataToDB(bookAsJson);
 
