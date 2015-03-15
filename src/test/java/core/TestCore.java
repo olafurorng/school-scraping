@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 public class TestCore extends TestCase
 {
     /**
-     * mocked up responses from the database teams so we can test the interface between
+     * mocked up responses from the database teams so we can test the interface between them and our
      */
     protected int[] responsesFromDatabaseTeam = new int[] {100, 101, 102, 200, 201, 202,
     203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308, 400, 401, 402, 403, 404, 405,

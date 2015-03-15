@@ -76,7 +76,7 @@ public class Scraper
         }
         */
 
-        return new ArrayList<Book>(); // TODO: change to retun allBooks
+        return new ArrayList<Book>(); // TODO: change to return allBooks
     }
 
     private List<Book> scrapeBooks(String categoryUrl)

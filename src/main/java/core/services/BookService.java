@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.Random;
 
 /**
  * Created by olafurorn on 2/22/15.
@@ -24,16 +23,18 @@ public class BookService
     // TODO: create mock generator
 
     protected ErrorManager errorManager;
+    protected MockDataBase mockDataBase;
 
 
 
     public BookService(ErrorManager errorManager)
     {
         this.errorManager = errorManager;
+        mockDataBase = new MockDataBase();
     }
 
     /**
-     * Note: a lot of stuff can change here as the database team has not decided completeley how they
+     * Note: a lot of stuff can change here as the database team has not decided completely how they
      * are going to have the endpoint and all the communications with us.
      *
      * So take this code with
@@ -54,8 +55,7 @@ public class BookService
             out.write(oneBookAsJson.toString());
             out.close();
 
-
-            if (getResponseCode(httpCon) == 200) // TODO: this might change, we are waiting for the database team
+            if (mockDataBase.insertIntoDatabase(oneBookAsJson) == 200) // TODO: this might change, we are waiting for the database team
             {
                 // TODO log some information out
             }
@@ -77,16 +77,5 @@ public class BookService
             errorManager.onError();
             Log.ex("", e);
         }
-    }
-
-    /**
-     *
-     * @param con
-     * @return response code for this @param con
-     */
-    protected int getResponseCode(HttpURLConnection con)
-    {
-        // con.getResponseCode();
-        return 0;
     }
 }
