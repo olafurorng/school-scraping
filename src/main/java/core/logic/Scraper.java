@@ -22,7 +22,7 @@ public class Scraper
     protected ErrorManager errorManager;
     protected BookService bookService;
 
-    public Scraper(ErrorManager errorManager, BookService bookService)
+    public  Scraper(ErrorManager errorManager, BookService bookService)
     {
         this.errorManager = errorManager;
         this.bookService = bookService;
