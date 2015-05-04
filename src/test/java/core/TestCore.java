@@ -73,11 +73,10 @@ public class TestCore extends TestCase
 
         for (int i = 0; i < numberOfBooks; i++)
         {
-            singleBook = new Book(getRandomString(),
+            singleBook = new Book(getRandomString(), getRandomString(),
                     getRandomIntFrom0To1000(), getRandomString(),
                     getRandomString(), getRandomString(),
-                    getRandomString(), getRandomString(),
-                    getRandomString(), getRandomIntFrom0To1000());
+                    getRandomIntFrom0To1000(), getRandomString());
 
             booksAsList.add(singleBook);
         }

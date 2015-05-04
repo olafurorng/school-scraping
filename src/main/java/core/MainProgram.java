@@ -5,6 +5,8 @@ import core.miscellaneous.ErrorManager;
 import core.miscellaneous.Log;
 import core.logic.Scraper;
 import core.services.BookService;
+import database.client.DatabaseBookScraper;
+import database.client.DatabaseBookTable;
 
 public class MainProgram
 {
@@ -18,6 +20,7 @@ public class MainProgram
     public static void main(String[] args)
     {
         Log.i("Starting a Scraper");
+
         instance = new MainProgram();
         instance.errorManager = new ErrorManager();
         instance.scraper = new Scraper(instance.errorManager,
@@ -42,6 +45,7 @@ public class MainProgram
         {
             Log.err("There is no connection :( to the website: " + Constants.ICELANDIC_BOOK_SALE_WEBSITE);
         }
+
     }
 
     public static MainProgram getProgram()

@@ -19,7 +19,7 @@ public class ErrorManager
 
     public void onError()
     {
-        // TODO:
+
     }
 
     public boolean checkConnection(String urlString)

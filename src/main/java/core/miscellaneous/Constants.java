@@ -6,6 +6,7 @@ package core.miscellaneous;
 public class Constants
 {
     public static final String ICELANDIC_BOOK_SALE_WEBSITE = "http://www.boksala.is/";
+    public static final int SCRAPING_TIMEOUT = 7000; // 7 sec.
 
     // Constants for book to have compatible with the server/database team
     public static final String TITLE = "title";

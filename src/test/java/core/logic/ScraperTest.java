@@ -4,14 +4,9 @@ import core.TestCore;
 import core.entities.Book;
 import core.miscellaneous.Constants;
 import core.miscellaneous.ErrorManager;
-import core.miscellaneous.Log;
 import core.services.BookService;
-import junit.framework.TestCase;
 import org.json.JSONObject;
-import org.mockito.verification.VerificationMode;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +36,7 @@ public class ScraperTest extends TestCore
 
     public void testScrapeAll() throws Exception
     {
-        scraper.categories = new ArrayList<List<String>>();
+        scraper.categories = new HashMap<String, String>();
         scraper.urls = new HashMap<String, String>();
 
         List<Book> books = mockGenerateBooks(0);
@@ -54,7 +49,7 @@ public class ScraperTest extends TestCore
             verify(scraper).turnBookIntoJsonBook(book);
         }
 
-        verify(bookService, times(books.size())).sendDataToDB(any(JSONObject.class));
+        verify(bookService, times(books.size())).sendDataToDB(any(Book.class));
     }
 
     public void testTurnBookIntoJsonBook() throws Exception
@@ -63,7 +58,6 @@ public class ScraperTest extends TestCore
         JSONObject returnValue = scraper.turnBookIntoJsonBook(book);
 
         assertEquals(book.getTitle(), returnValue.getString(Constants.TITLE));
-        assertEquals(book.getYear(), returnValue.getInt(Constants.YEAR));
         assertEquals(book.getIsbn(), returnValue.getString(Constants.ISBN));
         assertEquals(book.getPublisher(), returnValue.getString(Constants.PUBLISHER));
         assertEquals(book.getMainCategory(), returnValue.getString(Constants.MAIN_CATEGORY));
@@ -72,4 +66,5 @@ public class ScraperTest extends TestCore
         assertEquals(book.getImageUrl(), returnValue.getString(Constants.IMAGE_URL));
         assertEquals(book.getPublisherYear(), returnValue.getInt(Constants.PUBLISHER_YEAR));
     }
+
 }

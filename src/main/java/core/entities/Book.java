@@ -6,27 +6,24 @@ package core.entities;
 public class Book
 {
     private String title;
-    private int year;
-    private String isbn;
+    private Integer isbn;
     private String publisher;
     private String mainCategory;
     private String subCategory;
-    private String price;
+    private Integer price;
     private String imageUrl;
-    private int publisherYear;
+    private String publisherYear;
 
-    public Book(String title, int year, String isbn, String publisher, String mainCategory, String subCategory,
-                String price, String imageUrl, int publisherYear)
+    public Book(String title, String year, Integer isbn, String publisher, String mainCategory, String subCategory,
+                Integer price, String imageUrl)
     {
         this.title = title;
-        this.year = year;
         this.isbn = isbn;
         this.publisher = publisher;
         this.mainCategory = mainCategory;
         this.subCategory = subCategory;
         this.price = price;
         this.imageUrl = imageUrl;
-        this.publisherYear = publisherYear;
     }
 
     public String getTitle()
@@ -34,12 +31,7 @@ public class Book
         return title;
     }
 
-    public int getYear()
-    {
-        return year;
-    }
-
-    public String getIsbn()
+    public Integer getIsbn()
     {
         return isbn;
     }
@@ -59,7 +51,7 @@ public class Book
         return subCategory;
     }
 
-    public String getPrice()
+    public Integer getPrice()
     {
         return price;
     }
@@ -69,8 +61,14 @@ public class Book
         return imageUrl;
     }
 
-    public int getPublisherYear()
+    public String getPublisherYear()
     {
         return publisherYear;
+    }
+
+    @Override
+    public String toString()
+    {
+        return title;
     }
 }

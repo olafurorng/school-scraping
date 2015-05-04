@@ -18,7 +18,7 @@ public class ErrorManagerTest extends TestCore {
 
         manager = spy(new ErrorManager());
 
-        manager.con = mock(HttpURLConnection.class); // tODO: olafur: má jafnvel eyða
+        manager.con = mock(HttpURLConnection.class);
 
     }
 

@@ -47,7 +47,7 @@ public class BookServiceTest extends TestCore {
 
             when(service.mockDataBase.insertIntoDatabase(any(JSONObject.class))).thenReturn(responseCode);
 
-            service.sendDataToDB(bookAsJson);
+            service.sendDataToDB(book);
 
         }
 
@@ -70,13 +70,13 @@ public class BookServiceTest extends TestCore {
      * @throws Exception
      */
     public void testSendDataToDbFunctonality() throws Exception {
-        Book legalBook = new Book(getRandomString(), getRandomIntFrom0To1000(), getRandomString(), getRandomString(),
-                getRandomString(), getRandomString(), getRandomString(), getRandomString(),
-                getRandomIntFrom0To1000());
+        Book legalBook = new Book(getRandomString(), getRandomString(), getRandomIntFrom0To1000(),
+                getRandomString(), getRandomString(), getRandomString(), getRandomIntFrom0To1000(),
+                getRandomString());
 
-        Book illegalBook = new Book(getRandomString(), getRandomIntFrom0To1000(), "", getRandomString(),
-                getRandomString(), getRandomString(), getRandomString(), getRandomString(),
-                getRandomIntFrom0To1000());
+        Book illegalBook = new Book(getRandomString(), "", getRandomIntFrom0To1000(),
+                getRandomString(), getRandomString(), getRandomString(), getRandomIntFrom0To1000(),
+                getRandomString());
 
 
         Scraper scraper = spy(new Scraper(mock(ErrorManager.class),
@@ -84,8 +84,8 @@ public class BookServiceTest extends TestCore {
         JSONObject legalJsonBook = scraper.turnBookIntoJsonBook(legalBook);
         JSONObject illegalJsonBook = scraper.turnBookIntoJsonBook(illegalBook);
 
-        service.sendDataToDB(legalJsonBook);
-        service.sendDataToDB(illegalJsonBook);
+        service.sendDataToDB(legalBook);
+        service.sendDataToDB(illegalBook);
 
         assertEquals(1, service.mockDataBase.booksInDb.length());
     }
